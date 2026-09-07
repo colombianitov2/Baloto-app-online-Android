@@ -57,10 +57,10 @@ conservar la misma clave. Una distribución pública requiere una clave de publi
 - Se conserva el icono original y se extraen los textos de ayuda y descripción;
   únicamente se sustituyen las referencias exclusivas a Windows/Chromium.
 - El verificador conserva la comparación exacta y el orden de las balotas.
-- El actualizador consulta el mismo repositorio y acepta APK en lugar de EXE/MSI.
-  El release actual solo contiene el instalador Windows: la app informa esto.
-  La descarga e instalación de una actualización futura no se puede validar de
-  extremo a extremo hasta disponer de un release con APK más nuevo.
+- El actualizador consulta el repositorio independiente
+  `colombianitov2/Baloto-app-online-Android` y descarga APK.
+- La versión 1.0.2 desactiva `AndroidEnableMarshalMethods` para corregir
+  el cierre al iniciar la compilación Release en Android.
 - Comentarios conserva la apertura del cliente de correo, porque el endpoint
   del proyecto original está vacío. El usuario completa el envío desde su correo.
 

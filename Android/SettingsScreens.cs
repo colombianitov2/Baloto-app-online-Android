@@ -13,7 +13,7 @@ namespace BalotoAppOnline.Mobile;
 
 public partial class MainActivity
 {
-    const string Repository = "https://github.com/colombianitov2/Baloto-App-Online";
+    const string Repository = "https://github.com/colombianitov2/Baloto-app-online-Android";
 
     void Settings()
     {
@@ -41,7 +41,7 @@ public partial class MainActivity
         using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(45) };
         client.DefaultRequestHeaders.UserAgent.ParseAdd("BalotoAppOnline/1.0 Android");
         client.DefaultRequestHeaders.Add("Accept", "application/vnd.github+json");
-        using var response = await client.GetAsync("https://api.github.com/repos/colombianitov2/Baloto-App-Online/releases/latest");
+        using var response = await client.GetAsync("https://api.github.com/repos/colombianitov2/Baloto-app-online-Android/releases/latest");
         if (response.StatusCode == HttpStatusCode.NotFound) { status.Text = "El repositorio aún no tiene un release publicado."; Message("Actualización", status.Text); return; }
         response.EnsureSuccessStatusCode();
         var release = JObject.Parse(await response.Content.ReadAsStringAsync());

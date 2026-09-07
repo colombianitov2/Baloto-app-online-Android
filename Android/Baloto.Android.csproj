@@ -6,15 +6,14 @@
     <RootNamespace>BalotoAppOnline.Mobile</RootNamespace>
     <ApplicationId>com.colombianitov2.baloto</ApplicationId>
     <ApplicationTitle>Baloto Online</ApplicationTitle>
-    <ApplicationVersion>2</ApplicationVersion>
-    <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
+    <ApplicationVersion>3</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
     <RuntimeIdentifier>android-arm64</RuntimeIdentifier>
     <AndroidPackageFormats>apk</AndroidPackageFormats>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <RunAOTCompilation>false</RunAOTCompilation>
     <PublishTrimmed>false</PublishTrimmed>
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidEnablePreloadAssemblies>true</AndroidEnablePreloadAssemblies>
+    <AndroidEnableMarshalMethods>false</AndroidEnableMarshalMethods>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <AndroidSdkDirectory Condition="'$(AndroidSdkDirectory)' == '' and Exists('C:\Program Files (x86)\Android\android-sdk')">C:\Program Files (x86)\Android\android-sdk</AndroidSdkDirectory>
