@@ -1,77 +1,66 @@
 # Baloto Online para Android
 
-Adaptación del commit `51a6a00` del repositorio `colombianitov2/Baloto-App-Online`.
-El proyecto Windows y sus archivos originales se conservan intactos. `Sorteo.cs` y
-`DatosBaloto.cs` se compilan directamente como archivos enlazados: no se duplican
-ni se cambian los algoritmos, validaciones del modelo o formato del historial.
+Aplicación móvil para consultar y analizar el historial de sorteos de Baloto.
+Permite generar combinaciones de referencia usando datos históricos, revisar
+frecuencias y comparar un tiquete con resultados guardados.
 
-## Compilar
+## Descargar e instalar
 
-Requisitos: .NET 10, workload `android`, Android SDK 36 y JDK 21.
+La aplicación se distribuye como un único archivo `.apk`. No necesita instalar
+otro programa, complemento, runtime, navegador ni archivo adicional: todo lo
+necesario para Android está incluido dentro del APK.
 
-Desde la raíz del repositorio, en PowerShell:
+[Descargar Baloto Online Android 1.0.2](https://github.com/colombianitov2/Baloto-app-online-Android/releases/download/v1.0.2/Baloto-Android-v1.0.2.apk)
 
-```powershell
-./Android/prepare-port.ps1
-dotnet build Android/Baloto.Android.csproj -c Debug
-./Android.Tests/run.ps1
-dotnet publish Android/Baloto.Android.csproj -c Release
-```
+Abre el archivo descargado en el teléfono y autoriza la instalación desde esa
+fuente cuando Android lo solicite. Requiere Android 8 o superior y está
+preparada para teléfonos ARM64.
 
-El APK ARM64 se genera en
-`Android/bin/Release/net10.0-android/android-arm64/publish/com.colombianitov2.baloto-Signed.apk`.
-El proyecto detecta las rutas de SDK/JDK de este equipo. En otro equipo pueden
-indicarse con `-p:AndroidSdkDirectory=... -p:JavaSdkDirectory=...`.
-Referencia: [dependencias oficiales de .NET para Android](https://learn.microsoft.com/es-es/dotnet/android/getting-started/installation/dependencies).
+> Android utiliza archivos `.apk`; un `.exe` corresponde a Windows y no puede
+> instalarse directamente en un teléfono Android. Para el teléfono, el único
+> archivo necesario es el APK del enlace anterior.
 
-Para instalar o actualizar conservando los datos:
+## ¿Para qué sirve?
 
-```powershell
-adb install -r Android/bin/Release/net10.0-android/android-arm64/publish/com.colombianitov2.baloto-Signed.apk
-```
+Baloto Online conserva y analiza resultados históricos para estudiar sus patrones
+estadísticos. Puede:
 
-El artefacto de uso personal utiliza la firma de desarrollo local que genera el
-SDK de Android. Para mantener las actualizaciones sobre esta instalación se debe
-conservar la misma clave. Una distribución pública requiere una clave de publicación propia.
+- Generar una combinación automática.
+- Proponer números por frecuencia o distribución gaussiana.
+- Ingresar, importar y exportar sorteos en TXT.
+- Consultar el historial y analizar frecuencias por posición, mes y año.
+- Verificar un tiquete contra el historial guardado.
+- Actualizar resultados desde la web oficial de Baloto.
+- Descargar solo páginas nuevas después de la primera carga y conservar el
+  progreso si una actualización se interrumpe.
 
-## Adaptaciones de plataforma
+Las sugerencias son estadísticas y no predicen ni garantizan el resultado. Cada
+sorteo es aleatorio.
 
-- Windows Forms se sustituye por vistas Android, con los mismos botones, orden,
-  colores, opciones y contenido. Las tablas distribuyen sus columnas centradas
-  en todo el ancho, sin desplazamiento horizontal. Las listas cortas quedan fijas;
-  solo se desplaza verticalmente el contenido que supera la pantalla.
-- Los diálogos TXT/CSV utilizan el selector de archivos de Android. Los sorteos se
-  guardan en el directorio privado de la aplicación, con el mismo JSON y TXT.
-- `WebScraper.Android.cs` utiliza HTTP y conserva la tabla original, el filtro
-  exclusivo de Baloto, los límites y los formatos de fechas. `WebSync.cs` guarda
-  el progreso en `web-sync.json`, separado del historial.
-- La primera sincronización completa establece la caché. Después se consulta la
-  primera página y solo se continúa si hay novedades, hasta encontrar una página
-  de sorteos conocidos. Se comparan fecha y números, no números de página.
-- Si la primera carga se interrumpe y la portada no cambió, se continúa desde el
-  punto guardado. Si la web cambió durante una carga inicial incompleta, se vuelve
-  a validar para no omitir sorteos. No se declara completo un resultado parcial.
-- La caché conserva el historial anterior para recuperar registros faltantes sin
-  descargar otra vez las páginas antiguas. Las correcciones remotas en páginas
-  históricas que no se consultan no pueden detectarse con la actualización rápida.
-- Se conserva el icono original y se extraen los textos de ayuda y descripción;
-  únicamente se sustituyen las referencias exclusivas a Windows/Chromium.
-- El verificador conserva la comparación exacta y el orden de las balotas.
-- El actualizador consulta el repositorio independiente
-  `colombianitov2/Baloto-app-online-Android` y descarga APK.
-- La versión 1.0.2 desactiva `AndroidEnableMarshalMethods` para corregir
-  el cierre al iniciar la compilación Release en Android.
-- Comentarios conserva la apertura del cliente de correo, porque el endpoint
-  del proyecto original está vacío. El usuario completa el envío desde su correo.
+## Uso básico
 
-## Pruebas
+1. Abre la aplicación.
+2. Pulsa `Actualizar desde web` para cargar o completar el historial.
+3. Consulta `Historial` y `Tabla de análisis`.
+4. Usa uno de los generadores para obtener una combinación de referencia.
+5. Usa `Verificador de tiquetes` para comparar tus números.
 
-`Android.Tests/run.ps1` ejecuta 224 comprobaciones del código original, cambiando
-solo la carpeta de almacenamiento en una copia temporal para no usar datos reales
-de Windows. Incluye límites, duplicados, frecuencias, filtros, combinaciones,
-generadores, persistencia y compatibilidad TXT. Además ejecuta 13 comprobaciones
-de caché, cambios de paginación, interrupciones, recuperación y análisis HTML.
+El historial se guarda en el almacenamiento privado de la aplicación. Al
+desinstalarla, Android elimina esos datos; exporta el historial a TXT para
+conservar una copia.
 
-La verificación en equipo físico se documenta en el informe entregado junto al APK.
-El paquete usa `com.colombianitov2.baloto`, Android mínimo 8 y arquitectura ARM64;
-el dispositivo probado es un TECNO CK7n con Android 14.
+## Privacidad y conexión
+
+No requiere una cuenta. Solo necesita Internet para actualizar resultados o
+consultar nuevas versiones. El historial permanece en el teléfono, salvo que el
+usuario lo exporte.
+
+## Código y versiones
+
+- [Repositorio Android](https://github.com/colombianitov2/Baloto-app-online-Android)
+- [Release v1.0.2](https://github.com/colombianitov2/Baloto-app-online-Android/releases/tag/v1.0.2)
+- Paquete: `com.colombianitov2.baloto`
+- Versión: `1.0.2`
+
+El proyecto Windows original se conserva en su repositorio independiente. Este
+repositorio contiene la adaptación Android y el APK publicado.
