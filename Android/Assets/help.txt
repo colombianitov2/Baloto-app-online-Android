@@ -1,0 +1,49 @@
+EXPLICACIÓN DE FUNCIONES
+====================================
+
+1. AUTOMÁTICO (Inteligente)
+   - Combina varios algoritmos: frecuencias por posición, números calientes, combinaciones repetidas.
+   - Elige los números con mayor probabilidad estadística usando análisis avanzado.
+   - Ideal si quieres una apuesta con el máximo respaldo.
+
+2. RESULTADO POR FRECUENCIA (Frecuentista)
+   - Sugiere números basándose en la frecuencia histórica de cada posición.
+   - Para cada posición (balota 1 a 5), elige el número más repetido.
+   - La súper balota también se elige por la más frecuente.
+
+3. SUGERENCIA GAUSSIANA
+   - Similar a la frecuentista, pero añade aleatoriedad ponderada.
+   - Los números con mayor frecuencia tienen más probabilidad, pero no son fijos.
+   - Útil para evitar siempre los mismos números.
+
+4. INGRESAR DATOS
+   - Permite añadir manualmente un sorteo ganador.
+   - Debes ingresar 5 balotas (1-43, distintas) y una súper balota (1-16).
+   - La fecha se puede cambiar; por defecto es la actual.
+
+5. EXPORTAR / IMPORTAR (.txt)
+   - Exporta todos los sorteos a un archivo de texto.
+   - Importa desde un archivo con formato: dd/MM/yyyy N1 N2 N3 N4 N5 N6
+   - Útil para respaldos o para compartir datos.
+
+6. HISTORIAL
+   - Muestra la lista completa de sorteos guardados.
+   - Permite eliminar un sorteo seleccionado.
+
+7. VERIFICADOR DE TIQUETES
+   - Ingresa 5 balotas y 1 súper balota.
+   - Te indica si esa combinación exacta ha salido antes, y en qué fechas.
+
+8. TABLA DE ANÁLISIS
+   - Frecuencia por posición: cuántas veces ha salido cada número en cada columna.
+   - Frecuencia mensual/anual: permite filtrar por mes o año.
+   - Combinaciones más repetidas: muestra qué grupos de 5 balotas han aparecido juntos.
+   - Puedes exportar cualquier tabla a CSV (Excel).
+
+9. ACTUALIZAR DESDE WEB
+   - Conecta a la página oficial de Baloto y descarga automáticamente todos los sorteos históricos.
+   - Solo añade los que no existan en tu base de datos.
+   - Utiliza la conexión a Internet del celular.
+
+CONSEJO: Cuantos más sorteos tengas en el historial, más precisas serán las sugerencias.
+Actualiza desde web periódicamente para mantener los datos al día.

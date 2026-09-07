@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="WebSyncChecks.cs" />
+    <Compile Include="..\Android\WebSync.cs" Link="WebSync.cs" />
+    <Compile Include="..\Android\WebScraper.Android.cs" Link="WebScraper.Android.cs" />
+    <Compile Include="obj\DatosBaloto.Isolated.cs" />
+    <Compile Include="..\Sorteo.cs" Link="Sorteo.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+  </ItemGroup>
+</Project>

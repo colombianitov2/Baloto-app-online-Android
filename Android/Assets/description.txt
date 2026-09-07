@@ -1,0 +1,12 @@
+Esta aplicación ayuda a analizar y predecir sorteos del Baloto mediante estadísticas históricas.
+
+Funcionalidades:
+ • Resultado por frecuencia — sugerencia frecuentista por posición
+ • Sugerencia Gaussiana — selección ponderada por frecuencia
+ • Ingresar, exportar e importar sorteos (.txt)
+ • Tabla de análisis: frecuencias por posición, mes y año
+ • Historial con posibilidad de eliminar registros
+ • Actualización automática desde la web oficial
+ • Sugerencia Automática (inteligente) basada en múltiples factores
+
+Adaptada para Android · .NET para Android

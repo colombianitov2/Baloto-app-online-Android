@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>26</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BalotoAppOnline.Mobile</RootNamespace>
+    <ApplicationId>com.colombianitov2.baloto</ApplicationId>
+    <ApplicationTitle>Baloto Online</ApplicationTitle>
+    <ApplicationVersion>2</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
+    <RuntimeIdentifier>android-arm64</RuntimeIdentifier>
+    <AndroidPackageFormats>apk</AndroidPackageFormats>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <RunAOTCompilation>false</RunAOTCompilation>
+    <PublishTrimmed>false</PublishTrimmed>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AndroidSdkDirectory Condition="'$(AndroidSdkDirectory)' == '' and Exists('C:\Program Files (x86)\Android\android-sdk')">C:\Program Files (x86)\Android\android-sdk</AndroidSdkDirectory>
+    <JavaSdkDirectory Condition="'$(JavaSdkDirectory)' == '' and Exists('C:\Program Files\Android\openjdk\jdk-21.0.8')">C:\Program Files\Android\openjdk\jdk-21.0.8</JavaSdkDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Sorteo.cs" Link="Core\Sorteo.cs" />
+    <Compile Include="..\DatosBaloto.cs" Link="Core\DatosBaloto.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+  </ItemGroup>
+</Project>
