@@ -13,6 +13,8 @@
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <RunAOTCompilation>false</RunAOTCompilation>
     <PublishTrimmed>false</PublishTrimmed>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidEnablePreloadAssemblies>true</AndroidEnablePreloadAssemblies>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <AndroidSdkDirectory Condition="'$(AndroidSdkDirectory)' == '' and Exists('C:\Program Files (x86)\Android\android-sdk')">C:\Program Files (x86)\Android\android-sdk</AndroidSdkDirectory>
